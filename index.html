@@ -12,12 +12,47 @@
       background: linear-gradient(135deg, #6a11cb, #2575fc);
       height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       color: white;
       text-align: center;
+      overflow: hidden;
     }
 
+    /* Video Konteyneri */
+    .video-container {
+      width: 80%;
+      max-width: 800px;
+      height: 300px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Dikkat Uyarısı */
+    .warning {
+      position: absolute;
+      top: -50px; /* Videonun üstünde yer alması için */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: red;
+      padding: 10px;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      font-size: 18px;
+      width: 90%;
+      text-align: center;
+    }
+
+    /* İçerik Konteyneri */
     .container {
       background-color: rgba(0, 0, 0, 0.7);
       border-radius: 15px;
@@ -25,6 +60,8 @@
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
       width: 80%;
       max-width: 600px;
+      transition: all 0.5s ease;
+      position: relative;
     }
 
     h1 {
@@ -58,15 +95,59 @@
       transform: translateY(2px);
     }
 
+    /* Oklar için Stil */
+    .arrows-container {
+      position: absolute;
+      top: -50px; /* Okların yukarıda yer alması için */
+      right: -50px; /* Sağ tarafa yaslanacak şekilde */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .arrow {
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .arrow:hover {
+      color: #6a11cb;
+    }
+
+    .move-down {
+      transform: translateY(100px);
+    }
   </style>
 </head>
 <body>
-  <div class="container">
+  <!-- Video kısmı -->
+  <div class="video-container">
+    <div class="warning">!DİKKAT! TELEFONLARDA ÇALIŞMAMAKTADIR!</div>
+    <iframe src="https://www.youtube.com/embed/iBKfHX4ziKE?si=1_lmNADSMsUpTvKt" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+  <!-- İçerik kısmı -->
+  <div class="container" id="content">
     <h1>Hava Durumu Uygulaması</h1>
-    <p>Windows için Hava Durumu Uygulamanızın en son sürümünü indirmek için aşağıdaki butona tıklayın.</p>
+    <p id="text">Windows için Hava Durumu Uygulamanızın en son sürümünü indirmek için aşağıdaki butona tıklayın.</p>
     <a href="https://www.mediafire.com/file/us3m5dp91n2xgb9/Hava_Durumu_Uygulamas%25C4%25B1_Setup_1.0.0.exe/file" target="_blank">
-      <button class="download-btn">Uygulamayı İndir</button>
+      <button class="download-btn" onclick="moveText()">Uygulamayı İndir</button>
     </a>
   </div>
+
+  <!-- Oklar ve yazı -->
+  <div class="arrows-container">
+    <div class="arrow">&#8593;</div> <!-- Yukarı ok simgesi -->
+    <div style="font-size: 16px; color: white; margin-top: 10px;">Nasıl Kuracağınızı Öğrenin!</div>
+  </div>
+
+  <script>
+    function moveText() {
+      // Metnin aşağıya kaymasını sağlayacak sınıfı ekle
+      document.getElementById('content').classList.add('move-down');
+    }
+  </script>
 </body>
 </html>
