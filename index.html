@@ -10,23 +10,53 @@
       margin: 0;
       padding: 0;
       background: linear-gradient(135deg, #6a11cb, #2575fc);
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
-      flex-direction: column;
+      flex-direction: column; /* Flex direction'ı dikey yapmak için */
       justify-content: center;
       align-items: center;
       color: white;
       text-align: center;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
-    /* Video Konteyneri */
+    /* Butonlar için stil */
+    .buttons-container {
+      display: flex;
+      justify-content: space-between;
+      width: 80%;
+      max-width: 800px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+
+    .download-btn {
+      background-color: #2575fc;
+      padding: 20px 50px;
+      font-size: 24px;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      width: 48%; /* Her iki buton arasında eşit boşluk */
+    }
+
+    .download-btn:hover {
+      background-color: #6a11cb;
+      transform: translateY(-5px);
+    }
+
+    .download-btn:active {
+      transform: translateY(2px);
+    }
+
+    /* Video konteyneri */
     .video-container {
       width: 80%;
       max-width: 800px;
-      height: 300px;
-      margin-top: 20px;
-      margin-bottom: 20px;
+      margin: 20px 0;
       position: relative;
     }
 
@@ -36,32 +66,15 @@
       border: none;
     }
 
-    /* Dikkat Uyarısı */
-    .warning {
-      position: absolute;
-      top: -50px; /* Videonun üstünde yer alması için */
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: red;
-      padding: 10px;
-      color: white;
-      font-weight: bold;
-      border-radius: 8px;
-      font-size: 18px;
-      width: 90%;
-      text-align: center;
-    }
-
-    /* İçerik Konteyneri */
-    .container {
-      background-color: rgba(0, 0, 0, 0.7);
-      border-radius: 15px;
-      padding: 40px;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    /* İçerik kısmı */
+    .content-container {
       width: 80%;
       max-width: 600px;
-      transition: all 0.5s ease;
-      position: relative;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      margin-top: 30px;
     }
 
     h1 {
@@ -74,80 +87,39 @@
       margin-bottom: 30px;
     }
 
-    .download-btn {
-      background-color: #2575fc;
-      padding: 15px 30px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
-    }
-
-    .download-btn:hover {
-      background-color: #6a11cb;
-      transform: translateY(-5px);
-    }
-
-    .download-btn:active {
-      transform: translateY(2px);
-    }
-
-    /* Oklar için Stil */
-    .arrows-container {
-      position: absolute;
-      top: -50px; /* Okların yukarıda yer alması için */
-      right: -50px; /* Sağ tarafa yaslanacak şekilde */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .arrow {
-      font-size: 30px;
-      color: white;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .arrow:hover {
-      color: #6a11cb;
-    }
-
-    .move-down {
-      transform: translateY(100px);
-    }
   </style>
 </head>
 <body>
-  <!-- Video kısmı -->
-  <div class="video-container">
-    <div class="warning">!DİKKAT! TELEFONLARDA ÇALIŞMAMAKTADIR!</div>
-    <iframe src="https://www.youtube.com/embed/iBKfHX4ziKE?si=1_lmNADSMsUpTvKt" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-
-  <!-- İçerik kısmı -->
-  <div class="container" id="content">
-    <h1>Hava Durumu Uygulaması</h1>
-    <p id="text">Windows için Hava Durumu Uygulamanızın en son sürümünü indirmek için aşağıdaki butona tıklayın.</p>
+  <!-- Butonlar kısmı -->
+  <div class="buttons-container">
+    <!-- Exe Butonu -->
     <a href="https://www.mediafire.com/file/us3m5dp91n2xgb9/Hava_Durumu_Uygulamas%25C4%25B1_Setup_1.0.0.exe/file" target="_blank">
-      <button class="download-btn" onclick="moveText()">Uygulamayı İndir</button>
+      <button class="download-btn">Windows İçin Uygulama İndir (.exe)</button>
+    </a>
+    
+    <!-- Apk Butonu -->
+    <a href="https://www.mediafire.com/file/sc8mljvyk5t9jc4/Hava-Durumu.apk/file" target="_blank">
+      <button class="download-btn">Android İçin Uygulama İndir (.apk)</button>
     </a>
   </div>
 
-  <!-- Oklar ve yazı -->
-  <div class="arrows-container">
-    <div class="arrow">&#8593;</div> <!-- Yukarı ok simgesi -->
-    <div style="font-size: 16px; color: white; margin-top: 10px;">Nasıl Kuracağınızı Öğrenin!</div>
+  <!-- Exe Videoları -->
+  <div class="content-container">
+    <h1>Windows İçin Uygulama Kurulumu</h1>
+    <p>Windows uygulamanızın nasıl kurulacağına dair videoyu izleyin.</p>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/iBKfHX4ziKE?si=1_lmNADSMsUpTvKt" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </div>
 
-  <script>
-    function moveText() {
-      // Metnin aşağıya kaymasını sağlayacak sınıfı ekle
-      document.getElementById('content').classList.add('move-down');
-    }
-  </script>
+  <!-- Apk Videoları -->
+  <div class="content-container">
+    <h1>Android İçin Uygulama Kurulumu</h1>
+    <p>Android uygulamanızın nasıl kurulacağına dair videoyu izleyin.</p>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/iBKfHX4ziKE?si=1_lmNADSMsUpTvKt" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
 </body>
 </html>
